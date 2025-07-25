@@ -1,0 +1,430 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 背景图形 */
+.bg-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bg-shapes div {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bg-shapes div:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 10%;
+  animation: float 8s infinite;
+}
+
+.bg-shapes div:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  left: 15%;
+  animation: float 10s infinite;
+}
+
+.bg-shapes div:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  top: 30%;
+  left: 80%;
+  animation: float 7s infinite;
+}
+
+.bg-shapes div:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  top: 70%;
+  left: 75%;
+  animation: float 11s infinite;
+}
+
+.bg-shapes div:nth-child(5) {
+  width: 70px;
+  height: 70px;
+  top: 20%;
+  left: 50%;
+  animation: float 9s infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  25% {
+    transform: translateY(-15px) translateX(10px);
+  }
+
+  50% {
+    transform: translateY(8px) translateX(-10px);
+  }
+
+  75% {
+    transform: translateY(-5px) translateX(15px);
+  }
+}
+
+/* 登录容器 */
+.login-container {
+  position: relative;
+  width: 380px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(31, 38, 135, 0.25);
+}
+
+/* 登录标题 */
+.login-title {
+  margin-bottom: 30px;
+  text-align: center;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单样式 */
+.login-form .form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.login-form label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 15px 0;
+  font-size: 16px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  outline: none;
+  transition: 0.3s;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="text"]:valid,
+.login-form input[type="password"]:focus,
+.login-form input[type="password"]:valid {
+  border-bottom: 2px solid #fff;
+}
+
+.login-form input[type="text"]:focus~label,
+.login-form input[type="text"]:valid~label,
+.login-form input[type="password"]:focus~label,
+.login-form input[type="password"]:valid~label {
+  top: -20px;
+  left: 0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 登录按钮 */
+.login-btn {
+  position: relative;
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.login-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.login-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn:hover:before {
+  left: 100%;
+}
+
+/* 错误消息 */
+.error-message {
+  margin-top: 20px;
+  padding: 12px;
+  background: rgba(255, 0, 0, 0.15);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 验证码样式 */
+.captcha-group {
+  margin-bottom: 20px;
+}
+
+.captcha-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.captcha-container input {
+  flex: 1;
+  width: auto !important;
+  min-width: 120px;
+}
+
+.captcha-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.captcha-image img {
+  display: block;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.refresh-captcha {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.refresh-captcha:hover {
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.refresh-captcha i {
+  transition: transform 0.3s ease;
+}
+
+.refresh-captcha:hover i {
+  transform: rotate(180deg);
+}
+
+.captcha-hint {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* 记住我选项 */
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-me input[type="checkbox"] {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.remember-me input[type="checkbox"]:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.remember-me input[type="checkbox"]:checked {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.remember-me input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6e8efb;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.remember-me label {
+  position: static;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  pointer-events: auto;
+}
+
+.remember-me:hover label {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .login-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .remember-me {
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+
+  .remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  .remember-me input[type="checkbox"]:checked::after {
+    font-size: 10px;
+  }
+
+  .remember-me label {
+    font-size: 13px;
+  }
+
+  .login-btn {
+    margin-top: 15px;
+  }
+
+  .captcha-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .captcha-container input {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .captcha-image {
+    align-self: center;
+  }
+
+  .captcha-hint {
+    font-size: 11px;
+  }
+}
