@@ -1,0 +1,62 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 配置文件（包含敏感信息）
+config/database.php
+install.lock
+
+# 日志文件
+*.log
+
+# 缓存文件
+cache/
+temp/
+tmp/
+
+# 上传文件
+uploads/
+files/
+
+# 备份文件
+backup/
+backups/
+*.sql
+*.bak
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 依赖文件
+node_modules/
+vendor/
+
+# 环境文件
+.env
+.env.local
+.env.production
+
+# 系统生成文件
+*.tmp
+*.temp
+
+# PHP相关
+*.php~
+*.phps
+
+# 数据库文件
+*.sqlite
+*.db
+
+# 压缩文件
+*.zip
+*.rar
+*.tar.gz
+
+# 图片缓存
+thumbnails/
+resized/

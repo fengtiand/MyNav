@@ -1,0 +1,44 @@
+# Git相关
+.git
+.gitignore
+.github
+
+# 文档
+README.md
+*.md
+
+# 开发工具
+.vscode
+.idea
+*.log
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# 数据库备份
+database/backups/*
+!database/backups/.gitkeep
+
+# 上传文件
+admin/assets/uploads/*
+!admin/assets/uploads/.gitkeep
+
+# 配置文件（运行时生成）
+install.lock
+
+# Node.js相关（如果有）
+node_modules
+npm-debug.log
+yarn-error.log
+
+# PHP相关
+vendor
+composer.lock
+
+# 系统文件
+.env
+.env.local
+.env.*.local

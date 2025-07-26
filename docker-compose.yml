@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: mynav-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./config:/var/www/html/config
+      - ./database/backups:/var/www/html/database/backups
+      - ./admin/assets/uploads:/var/www/html/admin/assets/uploads
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - mynav-network
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: mynav-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mynav_root_2024
+      MYSQL_DATABASE: mynav
+      MYSQL_USER: mynav
+      MYSQL_PASSWORD: mynav_password_2024
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d
+    networks:
+      - mynav-network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  mynav-network:
+    driver: bridge
