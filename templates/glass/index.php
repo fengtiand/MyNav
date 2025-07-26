@@ -4,7 +4,9 @@
  */
 
 // 检查管理员是否登录
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $is_admin_logged_in = isset($_SESSION['admin_id']) && $_SESSION['admin_id'] > 0;
 
 // 获取个人信息设置

@@ -481,7 +481,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="requirements">
           <ul>
             <li>前台地址：<a href="index.php" target="_blank">访问前台</a></li>
-            <li>后台地址：<a href="admin/" target="_blank">进入后台</a></li>
+            <li>后台地址：<a href="admin/login.php" target="_blank">进入后台</a></li>
             <li>安装时间：<?php echo date('Y-m-d H:i:s'); ?></li>
           </ul>
         </div>

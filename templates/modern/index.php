@@ -3,11 +3,10 @@
  * Modern 模板 - 现代简约风格
  */
 
-// 检查管理员是否登录
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $is_admin_logged_in = isset($_SESSION['admin_id']) && $_SESSION['admin_id'] > 0;
-
-// 获取个人信息设置
 require_once __DIR__ . '/../../config/database.php';
 $conn = db_connect();
 $personal_settings = [];

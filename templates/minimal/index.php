@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $is_admin_logged_in = isset($_SESSION['admin_id']) && $_SESSION['admin_id'] > 0;
 
 require_once __DIR__ . '/../../config/database.php';
