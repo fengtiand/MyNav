@@ -434,6 +434,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <button type="submit" class="btn btn-block">测试连接</button>
         </form>
 
+        <div style="margin-top: 15px;">
+          <a href="http://doc.xhus.cn/web/#/p/2984cc016fb6b3829776c690d0f4108c" target="_blank">数据库安装教程</a>
+        </div>
+
         <?php if (isset($_SESSION['db_config']) && $success): ?>
           <a href="install.php?step=3" class="btn btn-block continue-btn">继续下一步</a>
         <?php endif; ?>
