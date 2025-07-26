@@ -12,9 +12,9 @@
  * Copyright (c) 2025 星涵网络 All rights reserved.
  */
 
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'mysql');  
 define('DB_USER', 'mynav');
-define('DB_PASS', 'NfAnpG6J6nEf3eYa');
+define('DB_PASS', 'mynav_password_2025');
 define('DB_NAME', 'mynav');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_PORT', '3306');

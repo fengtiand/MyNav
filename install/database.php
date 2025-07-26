@@ -51,6 +51,7 @@ class DatabaseInstaller
       if (!file_exists($sqlFile)) {
         throw new Exception('SQL文件不存在: ' . $sqlFile);
       }
+      $this->connection->set_charset('utf8mb4');
 
       $sql = file_get_contents($sqlFile);
 
@@ -84,6 +85,7 @@ class DatabaseInstaller
 
   public function createTables()
   {
+    $this->connection->set_charset('utf8mb4');
     $tables = [
       'admin_users' => "
                 CREATE TABLE IF NOT EXISTS `admin_users` (
@@ -181,6 +183,9 @@ class DatabaseInstaller
   public function insertDefaultData($adminUser, $adminPass, $adminEmail, $siteName, $siteDesc)
   {
     try {
+      // 设置连接字符集为 utf8mb4
+      $this->connection->set_charset('utf8mb4');
+      
       $passwordHash = password_hash($adminPass, PASSWORD_DEFAULT);
       $stmt = $this->connection->prepare("INSERT INTO admin_users (username, password, nickname, email, status) VALUES (?, ?, ?, ?, 1)");
       $nickname = '管理员';
