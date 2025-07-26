@@ -1,4 +1,8 @@
-FROM php:8.1-apache
+FROM php:8.0-apache
+
+# 设置国内镜像源
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+    && sed -i 's/security.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 # 安装必要的PHP扩展和系统依赖
 RUN apt-get update && apt-get install -y \
@@ -41,7 +45,9 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost/healthcheck.php || exit 1
 
 # 安装curl用于健康检查
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+    && sed -i 's/security.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+    && apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # 暴露端口
 EXPOSE 80
