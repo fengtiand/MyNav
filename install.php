@@ -435,7 +435,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div style="margin-top: 15px;">
-          <a href="http://doc.xhus.cn/web/#/p/2984cc016fb6b3829776c690d0f4108c" target="_blank">数据库安装教程</a>
+          <a href="http://doc.xhus.cn/web/#/612172001/256951061" target="_blank">数据库安装教程</a>
         </div>
 
         <?php if (isset($_SESSION['db_config']) && $success): ?>
