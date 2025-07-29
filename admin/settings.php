@@ -104,14 +104,7 @@ if ($result) {
   }
 }
 
-$sql = "SELECT * FROM templates ORDER BY is_default DESC, name ASC";
-$result = $conn->query($sql);
-$templates = [];
-if ($result) {
-  while ($row = $result->fetch_assoc()) {
-    $templates[] = $row;
-  }
-}
+
 
 $conn->close();
 
@@ -233,40 +226,7 @@ include_once __DIR__ . '/views/header.php';
   </div>
 </div>
 
-<div class="card mt-4">
-  <div class="card-header">
-    <h3 class="card-title">模板设置</h3>
-  </div>
-  <div class="card-body">
-    <div class="row">
-      <?php foreach ($templates as $template): ?>
-        <div class="col-md-4 col-sm-6 mb-4">
-          <div class="template-card <?php echo $template['is_default'] ? 'active' : ''; ?>">
-            <div class="template-name"><?php echo htmlspecialchars($template['name']); ?></div>
-            <div class="template-description"><?php echo htmlspecialchars($template['description']); ?></div>
 
-            <?php if (!$template['is_default']): ?>
-              <form method="post" action="templates.php" class="mt-2">
-                <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
-                <input type="hidden" name="action" value="set_default">
-                <input type="hidden" name="template_id" value="<?php echo $template['id']; ?>">
-                <button type="submit" class="btn btn-sm btn-outline-primary">设为默认</button>
-              </form>
-            <?php else: ?>
-              <span class="badge badge-success">当前默认</span>
-            <?php endif; ?>
-
-            <a href="templates.php?edit=<?php echo $template['id']; ?>" class="btn btn-sm btn-link">编辑</a>
-          </div>
-        </div>
-      <?php endforeach; ?>
-    </div>
-
-    <div class="mt-3">
-      <a href="templates.php" class="btn btn-secondary">管理全部模板</a>
-    </div>
-  </div>
-</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
